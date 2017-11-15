@@ -1,0 +1,10 @@
+package com.example.krlab.artest2;
+
+/**
+ * Created by krlab on 2017/11/12.
+ */
+
+public class WikitudeSDKConstants {
+    //11/12ライセンスきーの設定
+    protected static final String WIKITUDE_SDK_KEY = "Dw8WUdD8bRIbRdwaByzLwZx588LzAW4EBgyqr1nUIRkmQVTl5kBANlAYap5NZvMTo1XVEer7YT8fodli+F80Jwyqbwi08WeyxndwVxeowR6m6BnUa+WnbNFF3RZu52Wp6g8MkwSNiXakyF5RpF4+L5H+HgQUbYTx2QOpZCV8qC1TYWx0ZWRfX1oOy6YQQ8Q+TX3ZapaGsvaAvIw/BOTEg0mj0jLdWvg/uFUMYkGue/23cN5emvlanrB/H62MXFpULdrK/q0QCfjHJnvIrofiLBGHlWEryQCqNB6BftiKtMFyrOZXljc/aQcsYALzByMqWSV98USVSCY8hLyoeCTV5spiN3hJco6qn7Cj3S8cxpybX4XhMakFqrL7zZ2UUMNgxVzfI5gneBJZj04xkIa31s7AkrDVqNMZjisYJjfztJH+2ZfBkHqYYnf9V0GZSK7TahQpsDoi0D0aDzxLWiYPXOA4XZBdljbasEWcKX56bUlr0e6z+/mB5PEE0LWnOf98aXTX9jgycClZDU4+8YeK9MnSAdS7PgRaXf2Z/unsqqBo+0LlAHP2yLt7/qeUjzp6AU2IibEVbyUPsCsfnRr7Z0L23KdU4MbLiXIH6rJzmlSiUAlGus2p3ngHH4VdGJv835eHxPnAT/Kx8zn5UfqfSVOEaagt36l4Krt//luyHqU=:";
+}
