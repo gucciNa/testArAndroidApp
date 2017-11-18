@@ -15,6 +15,14 @@ import com.wikitude.common.camera.CameraSettings;
 
 import java.io.IOException;
 
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+
 
 public class MainActivity extends AppCompatActivity implements ArchitectViewHolderInterface {
 //public class MainActivity extends AppCompatActivity {
@@ -23,6 +31,9 @@ public class MainActivity extends AppCompatActivity implements ArchitectViewHold
     protected SensorAccuracyChangeListener  sensorAccuracyListener;
     protected LocationListener  locationListener;
     protected ArchitectViewHolderInterface.ILocationProvider    locationProvider;
+
+    protected Gps               gps;
+    private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +52,15 @@ public class MainActivity extends AppCompatActivity implements ArchitectViewHold
         //final ArchitectStartupConfiguration config = new ArchitectStartupConfiguration(this.getWikitudeSDKLicenseKey(), ArchitectStartupConfiguration.Features.Geo, config.getCameraPosition());
 
 
+        if (gps == null) {
+            gps = new Gps(MainActivity.this);
+        }
+        if (gps.isAvailableGps()) {
+            double gpsData[] = gps.getCurrentLocation();
+            //config.setFeatures(gps.getCurrentLocation());
+        }
+
+
         try {
             this.architectView.onCreate(config);
         } catch (RuntimeException ex) {
@@ -48,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements ArchitectViewHold
             Toast.makeText(getApplicationContext(), "can't create Architect View", Toast.LENGTH_SHORT).show();
         }
 
-/*
+
         //11/16
         this.sensorAccuracyListener = this.getSensorAccuracyListener();
         this.locationListener = new LocationListener() {
@@ -79,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements ArchitectViewHold
             }
         };
         this.locationProvider = getLocationProvider(this.locationListener);
-        */
+
     }
 
     //11/12下全部
@@ -155,7 +175,7 @@ public class MainActivity extends AppCompatActivity implements ArchitectViewHold
     public ArchitectViewHolderInterface.ILocationProvider getLocationProvider(final LocationListener locationListener) {
         return new LocationProvider(this, locationListener);
     }
-/*
+
     private long lastCalibrationToastShownTimeMillis = System.currentTimeMillis();
 
     public ArchitectView.SensorAccuracyChangeListener getSensorAccuracyListener() {
@@ -163,12 +183,12 @@ public class MainActivity extends AppCompatActivity implements ArchitectViewHold
             @Override
             public void onCompassAccuracyChanged( int accuracy ) {
 				// UNRELIABLE = 0, LOW = 1, MEDIUM = 2, HIGH = 3
-                if ( accuracy < SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM && MainActivity.this != null && !MainActivity.this.isFinishing() && System.currentTimeMillis() - MainActivity.this.lastCalibrationToastShownTimeMillis > 5 * 1000) {
+                //if ( accuracy < SensorManager.SENSOR_STATUS_ACCURACY_MEDIUM && MainActivity.this != null && !MainActivity.this.isFinishing() && System.currentTimeMillis() - MainActivity.this.lastCalibrationToastShownTimeMillis > 5 * 1000) {
                     //Toast.makeText( MainActivity.this, R.string.compass_accuracy_low, Toast.LENGTH_LONG ).show();
                     MainActivity.this.lastCalibrationToastShownTimeMillis = System.currentTimeMillis();
-                }
+                //}
             }
         };
     }
-*/
+
 }
