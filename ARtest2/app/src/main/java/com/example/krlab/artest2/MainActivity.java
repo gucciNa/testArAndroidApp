@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static com.wikitude.architect.ArchitectStartupConfiguration.Features.Geo;
 
 
 public class MainActivity extends AppCompatActivity implements ArchitectViewHolderInterface {
@@ -32,18 +33,22 @@ public class MainActivity extends AppCompatActivity implements ArchitectViewHold
     protected LocationListener  locationListener;
     protected ArchitectViewHolderInterface.ILocationProvider    locationProvider;
 
-    protected Gps               gps;
-    private TextView tv;
+    //protected Gps               gps;
+    //protected TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //tv = (TextView)findViewById(R.id.textView_main);
+
+
         //11/12(ねっくだったとこ)
         this.architectView = (ArchitectView) this.findViewById(R.id.architectView);
         final ArchitectStartupConfiguration config = new ArchitectStartupConfiguration();
         config.setLicenseKey(this.getWikitudeSDKLicenseKey());
+        config.setFeatures(Geo);
 
         //config.setFeatures(ArchitectStartupConfiguration.Features.Geo);
         //config.getCameraPosition();
@@ -52,14 +57,17 @@ public class MainActivity extends AppCompatActivity implements ArchitectViewHold
         //final ArchitectStartupConfiguration config = new ArchitectStartupConfiguration(this.getWikitudeSDKLicenseKey(), ArchitectStartupConfiguration.Features.Geo, config.getCameraPosition());
 
 
+/*
         if (gps == null) {
             gps = new Gps(MainActivity.this);
         }
         if (gps.isAvailableGps()) {
             double gpsData[] = gps.getCurrentLocation();
-            //config.setFeatures(gps.getCurrentLocation());
+            //config.setFeatures(Geo);
+            //tv.setText("緯度：" + gpsData[0] + " -経度：" + gpsData[1]);
+            tv.setText("Hello, textView");
         }
-
+*/
 
         try {
             this.architectView.onCreate(config);

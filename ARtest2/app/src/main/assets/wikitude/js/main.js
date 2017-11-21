@@ -1,4 +1,4 @@
-//document.write("aaaaaaaa");
+document.write("aaaaaaaa");
 
 var World = {
     loaded: false,
@@ -6,7 +6,7 @@ var World = {
     //initialized: false,
 
     init: function initFn() {
-        //console.log("js読み込んだ");
+        document.write("ARcreate");
 
         this.createModelAtLocation();
         //World.initialized = true;
@@ -38,57 +38,37 @@ var World = {
 
     createModelAtLocation: function createModelAtLocationFn() {
     //function createModelAtLocation() {
-        var location = new AR.RelativeLocation(null, 1, 0, 1);
+        var location = new AR.RelativeLocation(null, 5, 5, 5);
         //var location = new AR.RelativeLocation(null, 1, 0, 0);
 
-       // console.log("createModelAtLocationまではきた");
-
+        document.write("AR読み込み");
         var modelMashu = new AR.Model("assets/cube.wt3", {
             onLoaded: this.worldLoaded,
             //onLoaded: this.loadingStep,
             scale: {
-                x: 10,
-                y: 10,
-                z: 10
+                x: 1,
+                y: 1,
+                z: 1
             }
         });
 
         /*var imgModel = new AR.ImageDrawables("assets/10.png", 5, {
                 translate : {x: 1}
         });*/
-
+/*
         var indicatorImage = new AR.ImageResoruce("assets/10.png");
         var indicatorDrawable = new AR.ImageDrawables(indicatorImage, 0.1, {
             verticalAnchor: AR.CONST.VERTICAL_ANCHOR.TOP
         });
+*/
 
-
-        //console.log("ARの大きさ定義まで");
-        /*
-        this.tracker = new AR.ClientTracker("assets/cube.wt3", {
-            onLoaded: this.worldLoaded
-        });
-
-        var imgOne = new AR.ImageResoruce("assets/10.png");
-        var overLayOne = new AR.ImageDrawables(imgOne, 1, {
-            offsetX: -0.15,
-            offsetY: 0
-        });
-        var pageOne = new AR.Trackable2DObject(this.tracker, "*", {
-            drawables: {
-                cam: overLayOne
-            }
-        });
-        */
-        //}
+        document.write("AR表示の前");
         var obj = new AR.GeoObject(location, {
             drawables: {
-                cam: [modelMashu],
-                indicator: [indicatorDrawable]
+                cam: [modelMashu]
             }
-            //console.log("AR表示できた");
-            //document.write("AR create");
         });
+        document.write("AR表示のとこ");
     },
 
     worldLoaded: function worldLoadedFn() {
@@ -97,13 +77,6 @@ var World = {
         e.parentElement.removeChild(e);
     }
 
-/*
-    var trackable = new AR.ImageTrackable(this.tracker, "*", {
-        drawables: {
-            cam:[this.modelMashu]
-        }
-    });
-*/
 /*
     locationChanged: function (lat, lon, alt, acc) {
             AR.logger.info("緯度・経度：" + lat + ", " + lon);
