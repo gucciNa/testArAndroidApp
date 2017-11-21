@@ -38,7 +38,8 @@ var World = {
 
     createModelAtLocation: function createModelAtLocationFn() {
     //function createModelAtLocation() {
-        var location = new AR.RelativeLocation(null, 5, 5, 5);
+        //var location = new AR.GeoLocation(33.620761, 133.718828);
+        var location = new AR.RelativeLocation(null, 1, 1, 0);
         //var location = new AR.RelativeLocation(null, 1, 0, 0);
 
         document.write("AR読み込み");
@@ -46,28 +47,23 @@ var World = {
             onLoaded: this.worldLoaded,
             //onLoaded: this.loadingStep,
             scale: {
-                x: 1,
-                y: 1,
-                z: 1
+                x: 0.001,
+                y: 0.001,
+                z: 0.001
             }
         });
 
-        /*var imgModel = new AR.ImageDrawables("assets/10.png", 5, {
-                translate : {x: 1}
-        });*/
-/*
-        var indicatorImage = new AR.ImageResoruce("assets/10.png");
-        var indicatorDrawable = new AR.ImageDrawables(indicatorImage, 0.1, {
-            verticalAnchor: AR.CONST.VERTICAL_ANCHOR.TOP
-        });
-*/
-
         document.write("AR表示の前");
+
+
         var obj = new AR.GeoObject(location, {
             drawables: {
                 cam: [modelMashu]
             }
         });
+
+
+        //var obj = new AR.GeoObject(location);
         document.write("AR表示のとこ");
     },
 
